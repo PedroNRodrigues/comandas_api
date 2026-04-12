@@ -1,9 +1,10 @@
 from infra import database
 from sqlalchemy import Column, VARCHAR, Integer, DECIMAL, LargeBinary
 
+
 # ORM
 class ProdutoDB(database.Base):
-    __tablename__ = 'tb_produto'
+    __tablename__ = "tb_produto"
 
     id = Column(Integer, primary_key=True, autoincrement=True, index=True)
     nome = Column(VARCHAR(100), nullable=False, index=True)

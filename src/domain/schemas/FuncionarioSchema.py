@@ -1,6 +1,7 @@
 from pydantic import BaseModel, ConfigDict
 from typing import Optional
 
+
 class FuncionarioCreate(BaseModel):
     nome: str
     matricula: str
@@ -9,6 +10,7 @@ class FuncionarioCreate(BaseModel):
     grupo: int
     senha: str
 
+
 class FuncionarioUpdate(BaseModel):
     nome: Optional[str] = None
     matricula: Optional[str] = None
@@ -16,6 +18,7 @@ class FuncionarioUpdate(BaseModel):
     telefone: Optional[str] = None
     grupo: Optional[int] = None
     senha: Optional[str] = None
+
 
 class FuncionarioResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)

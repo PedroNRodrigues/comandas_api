@@ -1,5 +1,6 @@
 from dotenv import load_dotenv, find_dotenv
 import os
+
 # localiza o arquivo de .env
 dotenv_file = find_dotenv()
 # Carrega o arquivo .env
@@ -17,16 +18,22 @@ DB_USER = os.getenv("DB_USER")
 DB_PASS = os.getenv("DB_PASS")
 # Ajusta STR_DATABASE conforme gerenciador escolhido
 
-if DB_SGDB == 'sqlite': # SQLite
+if DB_SGDB == "sqlite":  # SQLite
     # habilita foreign keys - integridade referencial - pragma
     STR_DATABASE = f"sqlite:///{DB_NAME}.db?foreign_keys=1"
-elif DB_SGDB == 'mysql': # MySQL
+elif DB_SGDB == "mysql":  # MySQL
     import pymysql
-    STR_DATABASE = f"mysql+pymysql://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}?charset=utf8mb4"
-elif DB_SGDB == 'mssql': # SQL Server
+
+    STR_DATABASE = (
+        f"mysql+pymysql://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}?charset=utf8mb4"
+    )
+elif DB_SGDB == "mssql":  # SQL Server
     import pymssql
-    STR_DATABASE = f"mssql+pymssql://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}?charset=utf8"
-else: # SQLite
+
+    STR_DATABASE = (
+        f"mssql+pymssql://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}?charset=utf8"
+    )
+else:  # SQLite
     STR_DATABASE = f"sqlite:///apiDatabase.db?foreign_keys=1"
 # Configurações JWT
 SECRET_KEY = os.getenv("SECRET_KEY", "sua-chave-secreta-super-forte-mudar-em-producao")
